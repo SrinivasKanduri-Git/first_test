@@ -1,0 +1,23 @@
+<h1>Showing recipe details</h1>
+<ul>
+  <li><strong>Recipe id: <%= @recipe.id%></<strong></li>
+  <li><strong>Recipe name: <%= @recipe.name%></<strong></li>
+  <%if @recipe.ingredients.any?%>
+    <%@recipe.ingredients.each do |ing|%>
+      <li><strong>Ingredients: <%= ing.list%></<strong></li>
+    <% end %>
+  <% else %>
+    <li><strong>Ingredients: <%= link_to 'add ingredient', new_ingredient_path%></<strong></li>
+  <% end %>
+
+  <%if @recipe.recipe_type.nil?%>
+  <li><strong>Recipe type: <%= link_to 'add recipe type', new_recipe_type_path%></<strong></li>
+  <% else %>
+    <%rt = RecipeType.find_by(recipe_id: @recipe.id)%>
+    <li><strong>Recipe type: <%= rt.recipe_type%></<strong></li>
+  <% end %>
+</ul>
+<h2>
+  <%= link_to 'edit recipe', edit_recipe_path%></br>
+  <%= link_to 'delete recipe', recipe_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}%>
+</h2>

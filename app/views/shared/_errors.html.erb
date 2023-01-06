@@ -1,0 +1,6 @@
+<%if obj.errors.any?%>
+  <h1>The following errors prevented the <%= obj.class.name.downcase %> from being saved</h1>
+ <% obj.errors.full_messages.each do |err|%>
+  <li><%=err%></li>
+ <% end%>
+<% end %>

@@ -1,0 +1,7 @@
+<h1>Edit the recipe type: </h1>
+<%= render 'shared/errors', obj: @recipe_type%>
+<%=form_with(model: @recipe_type, local: true) do |f|%>
+  <%=f.label :Recipe_type%>
+  <%=f.text_field :recipe_type%>
+  <%=f.submit%>
+<%end%>

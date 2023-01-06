@@ -1,0 +1,7 @@
+<h1>Edit the ingredient: </h1>
+<%= render 'shared/errors', obj: @ingredient%>
+<%=form_with(model: @ingredient, local: true) do |f|%>
+  <%=f.label :ingredients%>
+  <%=f.text_area :list%>
+  <%=f.submit%>
+<%end%>
