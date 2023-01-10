@@ -18,8 +18,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      flash[:notice] = "Recipe was successfully Added, recipe_id=#{@recipe.id}"
-      redirect_to new_ingredient_path
+      flash[:notice] = "Recipe was successfully Added."
+      redirect_to recipes_path
     else
       render 'new', status: :unprocessable_entity
     end

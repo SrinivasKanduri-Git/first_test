@@ -5,11 +5,3 @@
   <%=f.text_field :name%>
   <%=f.submit%>
 <%end%>
-<h2>
-  <%if @recipe.ingredients.any?%>
-    <strong><%= link_to 'edit ingredients', edit_ingredient_path(@recipe.ingredients.ids)%></strong></br>
-  <%end%>
-  <%unless @recipe.recipe_type.nil?%>
-    <strong><%= link_to 'edit recipe type', edit_recipe_type_path(@recipe.recipe_type.id)%></strong>
-  <%end%>
-</h2>

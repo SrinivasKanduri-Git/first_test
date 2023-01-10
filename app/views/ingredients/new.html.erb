@@ -1,9 +1,9 @@
 <%= render 'shared/errors', obj: @ingredient%>
+ <%id = params[:recipe_id]%>
 <h1>Adding new ingredient:</h1>
-<%=form_with(model: @ingredient, local: true) do |f|%>
-  <%=f.label :recipe_id%>
-  <%=f.text_field :recipe_id%></br>
-  <%=f.label :ingredient%>
-  <%=f.text_area :list%>
-  <%=f.submit%>
-<%end%>
+<%= form_for @ingredient do |f| %>
+  <%= f.label :ingredients%>
+  <%= f.text_area :list%>
+  <%= f.hidden_field :recipe_id, value: id%>
+  <%= f.submit %>
+<% end %>

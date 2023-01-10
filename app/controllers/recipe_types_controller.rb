@@ -10,6 +10,7 @@ class RecipeTypesController < ApplicationController
 
     def new
       @recipe_type = RecipeType.new
+      @recipe = Recipe.find(params[:recipe_id])
     end
 
     def edit

@@ -10,6 +10,7 @@ class IngredientsController < ApplicationController
 
   def new
     @ingredient = Ingredient.new
+    @recipe = Recipe.find(params[:recipe_id])
   end
 
   def edit
@@ -19,7 +20,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ing_params)
     if @ingredient.save
       flash[:notice] = "ingredient was successfully Added."
-      redirect_to new_recipe_type_path
+      redirect_to recipes_path
     else
       render 'new', status: :unprocessable_entity
     end
@@ -39,6 +40,7 @@ class IngredientsController < ApplicationController
       flash[:notice] = "The recipe was deleted."
       redirect_to recipes_path
   end
+
 
   private
 

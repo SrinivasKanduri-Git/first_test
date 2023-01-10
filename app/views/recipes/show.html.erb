@@ -1,23 +1,22 @@
 <h1>Showing recipe details</h1>
 <ul>
-  <li><strong>Recipe id: <%= @recipe.id%></<strong></li>
-  <li><strong>Recipe name: <%= @recipe.name%></<strong></li>
+  <li><strong>Recipe name: <%= link_to @recipe.name, edit_recipe_path(@recipe.id)%></<strong></li>
   <%if @recipe.ingredients.any?%>
+  <strong><u>Ingredients: </u></strong>
     <%@recipe.ingredients.each do |ing|%>
-      <li><strong>Ingredients: <%= ing.list%></<strong></li>
+      <li><strong><%= link_to ing.list, edit_ingredient_path(ing.id)%></<strong></li>
     <% end %>
   <% else %>
-    <li><strong>Ingredients: <%= link_to 'add ingredient', new_ingredient_path%></<strong></li>
+    <li><strong>Ingredients: <%= link_to 'add ingredient', new_ingredient_path(@recipe.id)%></<strong></li>
   <% end %>
 
   <%if @recipe.recipe_type.nil?%>
-  <li><strong>Recipe type: <%= link_to 'add recipe type', new_recipe_type_path%></<strong></li>
+  <li><strong>Recipe type: <%= link_to 'add recipe type', new_recipe_type_path(@recipe.id)%></<strong></li>
   <% else %>
     <%rt = RecipeType.find_by(recipe_id: @recipe.id)%>
-    <li><strong>Recipe type: <%= rt.recipe_type%></<strong></li>
+    <li><strong>Recipe type: <%= link_to rt.recipe_type, edit_recipe_type_path(rt.id)%></<strong></li>
   <% end %>
 </ul>
 <h2>
-  <%= link_to 'edit recipe', edit_recipe_path%></br>
   <%= link_to 'delete recipe', recipe_path, data: {turbo_confirm: "Are you sure?", turbo_method: :delete}%>
 </h2>
