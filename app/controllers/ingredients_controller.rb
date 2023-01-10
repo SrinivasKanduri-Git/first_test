@@ -20,7 +20,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ing_params)
     if @ingredient.save
       flash[:notice] = "ingredient was successfully Added."
-      redirect_to recipes_path
+      redirect_to recipe_path(@ingredient.recipe)
     else
       render 'new', status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class IngredientsController < ApplicationController
   def update
     if @ingredient.update(ing_params)
       flash[:notice] = "ingredient edited successfully."
-      redirect_to recipes_path
+      redirect_to recipe_path(@ingredient.recipe)
     else
       render 'edit', status: :unprocessable_entity
     end

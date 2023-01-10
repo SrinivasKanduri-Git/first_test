@@ -20,7 +20,7 @@ class RecipeTypesController < ApplicationController
       @recipe_type = RecipeType.new(rt_params)
       if @recipe_type.save
         flash[:notice] = "Recipe type was successfully Added."
-        redirect_to recipes_path
+        redirect_to recipe_path(@recipe_type.recipe)
       else
         render 'new', status: :unprocessable_entity
       end
@@ -29,7 +29,7 @@ class RecipeTypesController < ApplicationController
     def update
       if @recipe_type.update(rt_params)
         flash[:notice] = "Recipe type edited successfully."
-        redirect_to recipes_path
+        redirect_to recipe_path(@recipe_type.recipe)
       else
         render 'edit', status: :unprocessable_entity
       end

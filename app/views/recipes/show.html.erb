@@ -7,11 +7,11 @@
       <li><strong><%= link_to ing.list, edit_ingredient_path(ing.id)%></<strong></li>
     <% end %>
   <% else %>
-    <li><strong>Ingredients: <%= link_to 'add ingredient', new_ingredient_path(@recipe.id)%></<strong></li>
+    <li><strong>Ingredients: <%= link_to 'add ingredient', new_ingredient_path(recipe_id: @recipe.id)%></<strong></li>
   <% end %>
 
   <%if @recipe.recipe_type.nil?%>
-  <li><strong>Recipe type: <%= link_to 'add recipe type', new_recipe_type_path(@recipe.id)%></<strong></li>
+  <li><strong>Recipe type: <%= link_to 'add recipe type', new_recipe_type_path(recipe_id: @recipe.id)%></<strong></li>
   <% else %>
     <%rt = RecipeType.find_by(recipe_id: @recipe.id)%>
     <li><strong>Recipe type: <%= link_to rt.recipe_type, edit_recipe_type_path(rt.id)%></<strong></li>
